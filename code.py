@@ -16,14 +16,27 @@ qual_panda = pd.read_csv("rmpCapstoneQual.csv",names = ["Major/Field", "Universi
 all_panda = num_panda.join(qual_panda)
 
 # filter by num ratings > 10
-all_panda = all_panda[all_panda['Num Ratings'] > 10]
+all_panda = all_panda[all_panda['Num Ratings'] > 5]
 
 all_data = all_panda.values
-print(len(all_data))
 
 # 1: Is there evidence of pro-male gender bias?
-# x = gender
-# y = rating
+
+# significance test
+male_ratings = all_panda[all_panda["Male"] == 1 ][["Avg Rating", "Male"]]
+female_ratings = all_panda[all_panda["Female"] == 1][["Avg Rating", "Female"]]
+print("Average male ratings: ", male_ratings["Avg Rating"].mean())
+print("Average female ratings: ", female_ratings["Avg Rating"].mean())
+print("Variance of male ratings: ", male_ratings["Avg Rating"].var())
+print("Variance of male ratings: ", female_ratings["Avg Rating"].var())
+
+# We will perform a significance test. We will use the independent samples t-test
+# because the ratings of each professor are independent and the variances are similar.
+tstat, pvalue = stats.ttest_ind(male_ratings["Avg Rating"], female_ratings["Avg Rating"])
+print("p-value:", pvalue)
+
+
+# perform significance testing 
 
 # 2: Is there an effect of experience on the quality of teaching?
 
