@@ -5,7 +5,7 @@
 ### <ins> About data: </ins>
 The data is pulled from a website called ratemyprofesoor.com that has information on student ratings of college professors. There are two csv files resulting from the website scraping:
 
-#### <ins> rmpCapstoneNum.csv: </ins>
+#### rmpCapstoneNum.csv: 
 Each row contains information on a single professor.
 The columns represent the following information, in order:
 1: Average Rating (the arithmetic mean of all individual quality ratings of this professor)
@@ -16,7 +16,7 @@ The columns represent the following information, in order:
 6: The number of ratings coming from online classes
 7: Male gender (Boolean – 1: determined with high confidence that professor is male)
 8: Female (Boolean – 1: determined with high confidence that professor is female)
-#### <ins> rmpCapstoneQual.csv </ins>
+#### rmpCapstoneQual.csv 
 The columns represent the following information, in order:
 1: Major/Field
 2: University
