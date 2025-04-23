@@ -8,20 +8,22 @@ import random
 
 random.seed(10992530)
 
-# How I handle missing data, set threshold for min num of ratings??
-
 #importing data from both csv files
+num_panda = pd.read_csv("rmpCapstoneNum.csv", names = ["Avg Rating", "Avg Difficulty", "Num Ratings", "Pepper", "Would Retake", "Online", "Male", "Female"])
+qual_panda = pd.read_csv("rmpCapstoneQual.csv",names = ["Major/Field", "University", "State"])
 
-num_data = np.genfromtxt("rmpCapstoneNum.csv")
-qual_data = np.genfromtxt("rmpCapstoneQual.csv")
+#combine two data files
+all_panda = num_panda.join(qual_panda)
 
-num_panda = pd.read_csv("rmpCapstoneNum.csv")
-qual_data = pd.read_csv("rmpCaptoneQual.csv")
+# filter by num ratings > 10
+all_panda = all_panda[all_panda['Num Ratings'] > 10]
 
-#clean the data
-
+all_data = all_panda.values
+print(len(all_data))
 
 # 1: Is there evidence of pro-male gender bias?
+# x = gender
+# y = rating
 
 # 2: Is there an effect of experience on the quality of teaching?
 

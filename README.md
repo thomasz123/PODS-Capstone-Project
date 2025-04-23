@@ -3,7 +3,7 @@
 ### <ins> About project: Capstone proj </ins>
 
 ### <ins> About data: </ins>
-The data is pulled from a website called ratemyprofesoor.com that has information on student ratings of college professors. There are two csv files resulting from the website scraping:
+The data is pulled from a website called ratemyprofessor.com that has information on student ratings of college professors. There are two csv files resulting from the website scraping:
 
 #### rmpCapstoneNum.csv: 
 Each row contains information on a single professor.  
