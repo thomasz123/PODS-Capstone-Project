@@ -35,6 +35,7 @@ tstat, pvalue = stats.ttest_ind(male_ratings["Avg Rating"], female_ratings["Avg 
 print("p-value:", pvalue)
 
 # creating chart (maybe sd?)
+# box plot??
 
 
 # 2: Is there an effect of experience on the quality of teaching?
@@ -49,6 +50,8 @@ print("p-value:", pvalue)
 
 # 3: What is the relationship between average rating and average difficulty?
 
+
+
 # 4: Do professors who teach a lot of classes in the online modality receive higher or
 # lower ratings than those who don't? 
 
@@ -59,21 +62,38 @@ print("p-value:", pvalue)
 
 # 7: Build a regression model predicting average rating from difficulty only. 
 
-x = all_panda[["Avg Difficulty"]]
-y = all_panda[["Avg Rating"]]
-model7 = LinearRegression()
-model7.fit(x,y)
-slope7 = model7.coef_
-intercept7 = model7.intercept_
+# x = all_panda[["Avg Difficulty"]]
+# y = all_panda[["Avg Rating"]]
+# model7 = LinearRegression()
+# model7.fit(x,y)
+# slope7 = model7.coef_
+# intercept7 = model7.intercept_
 
-plt.plot(x, y, 'o', markersize = 3)
-plt.plot(x, slope7 * x + intercept7, color = 'orange', linewidth = 3)
-plt.xlabel("Avg Difficulty")
-plt.ylabel("Avg Rating")
-plt.title("Avg Difficulty vs Avg Rating")
-plt.show()
+# plt.plot(x, y, 'o', markersize = 3)
+# plt.plot(x, slope7 * x + intercept7, color = 'orange', linewidth = 3)
+# plt.xlabel("Avg Difficulty")
+# plt.ylabel("Avg Rating")
+# plt.title("Avg Difficulty vs Avg Rating")
+# plt.show()
 
 # 8: Build a regression model predicting average rating from all available factors
+
+df8 = all_panda.drop(["Major/Field", "University", "State"] , axis = 1).dropna()
+
+x8 = df8.drop("Avg Rating" , axis = 1)
+y8 = df8[["Avg Rating"]]
+
+model8 = LinearRegression()
+model8.fit(x8,y8)
+slope8 = model8.coef_
+intercept8 = model8.intercept_
+
+plt.plot(x8, y8, 'o', markersize = 3)
+plt.plot(x8, slope8 * x8 + intercept8, color = 'orange', linewidth = 3)
+plt.xlabel("All Factors")
+plt.ylabel("Avg Rating")
+plt.title("All Factors vs Avg Rating")
+plt.show()
 
 
 
